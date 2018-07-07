@@ -13,11 +13,11 @@ import com.example.zdm.weiyingdemo.R;
 /**
  * author:Created by WeiWeiFeng on 2018/7/6.
  */
-public class MyFragment extends Fragment {
+public class SpecialFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = View.inflate(getContext(), R.layout.my_fragment, null);
+        View inflate = View.inflate(getContext(), R.layout.special_fragment, null);
         return inflate;
     }
 }
