@@ -1,8 +1,8 @@
 package com.example.zdm.weiyingdemo.view.activity;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.presenter.MainPresenter;
@@ -14,6 +14,7 @@ import com.hjm.bottomtabbar.BottomTabBar;
 
 public class MainActivity extends BaseActivity<MainPresenter> {
     private BottomTabBar mBottomTabBar;
+    private TextView title;
 
     @Override
     protected MainPresenter setPresenter() {
@@ -28,7 +29,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     @Override
     protected void initView() {
 
-
+        title = (TextView) findViewById(R.id.title_main);
         mBottomTabBar = (BottomTabBar) findViewById(R.id.bottom_tab_bar);
         mBottomTabBar
                 .init(getSupportFragmentManager())//初始化方法，必须第一个调用；传入参数为V4包下的FragmentManager
@@ -49,7 +50,8 @@ public class MainActivity extends BaseActivity<MainPresenter> {
                     public void onTabChange(int position, String name, View view) {
                         //这里不用说，你们也都看的懂了
                         //暂时就返回了这俩参数，如果还有什么用的比较多的参数，欢迎留言告诉我，我继续添加上
-                        Log.i("TGA", "位置：" + position + "      选项卡的文字内容：" + name);
+//                        Log.i("TGA", "位置：" + position + "      选项卡的文字内容：" + name);
+                        title.setText(name);
                     }
 
                 })
