@@ -29,7 +29,6 @@ public abstract class BaseActivity <P extends BasePresenter> extends AppCompatAc
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
         }
     }
 
