@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,8 +16,9 @@ import com.example.zdm.weiyingdemo.R;
 public class TitleLayout extends LinearLayout {
 
     private TextView tv_title;
+
     public TitleLayout(Context context) {
-        super(context,null);
+        super(context, null);
     }
 
     public TitleLayout(final Context context, AttributeSet attrs) {
@@ -25,31 +26,30 @@ public class TitleLayout extends LinearLayout {
 
         //引入布局
         View inflate = LayoutInflater.from(context).inflate(R.layout.title_bar, this);
-        Button btnBack=(Button)inflate.findViewById(R.id.btnBack);
-        Button btnEdit=(Button)inflate.findViewById(R.id.btnEdit);
+        ImageView btnBack = (ImageView) inflate.findViewById(R.id.btnBack);
+        ImageView btnEdit = (ImageView) inflate.findViewById(R.id.btnEdit);
         btnBack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((Activity)getContext()).finish();
+                ((Activity) getContext()).finish();
+                ((Activity) getContext()).overridePendingTransition(R.animator.finish_in, R.animator.finish_to);
             }
         });
 
         btnEdit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"编辑",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "编辑", Toast.LENGTH_SHORT).show();
             }
         });
 
-        tv_title=(TextView)findViewById(R.id.tv_title);
+        tv_title = (TextView) findViewById(R.id.tv_title);
 
     }
 
     //显示活的的标题
-    public void setTitle(String title)
-    {
-        if(!TextUtils.isEmpty(title))
-        {
+    public void setTitle(String title) {
+        if (!TextUtils.isEmpty(title)) {
             tv_title.setText(title);
         }
     }
