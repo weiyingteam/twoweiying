@@ -25,7 +25,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
+    implementation 'com.shuyu:GSYVideoPlayer:5.0.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
@@ -42,4 +42,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.youth.banner:banner:1.4.9'
     implementation 'com.hjm:BottomTabBar:1.2.2'
+    implementation 'cn.carbs.android:ExpandableTextView:1.0.0'
+    compile 'com.android.support:design:25.2.0'
 }

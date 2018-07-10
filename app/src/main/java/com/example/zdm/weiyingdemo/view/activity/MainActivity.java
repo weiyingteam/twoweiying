@@ -27,7 +27,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IfoundV
 
     @Override
     protected void initData() {
-        presenter.attachView(this);
         presenter.getView();
     }
 

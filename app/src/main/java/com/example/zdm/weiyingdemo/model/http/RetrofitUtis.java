@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitUtis {
     private static RetrofitUtis retrofitUtis;
-    private final RetrofitApi retrofitApi;
+    private static RetrofitApi retrofitApi;
 
     private RetrofitUtis() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
