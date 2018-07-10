@@ -3,7 +3,6 @@ package com.example.zdm.weiyingdemo.presenter;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
 import com.example.zdm.weiyingdemo.model.mdata.TestData;
 import com.example.zdm.weiyingdemo.model.minterfaces.Foundinterface;
-import com.example.zdm.weiyingdemo.view.interfaces.IBaseView;
 import com.example.zdm.weiyingdemo.view.interfaces.IfoundView;
 
 /**
