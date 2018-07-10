@@ -1,23 +1,47 @@
 package com.example.zdm.weiyingdemo.view.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.zdm.weiyingdemo.R;
+import com.example.zdm.weiyingdemo.model.bean.AbBean;
+import com.example.zdm.weiyingdemo.presenter.MainPresenter;
+import com.example.zdm.weiyingdemo.view.interfaces.IfoundView;
 
 /**
  * author:Created by WeiWeiFeng on 2018/7/6.
  */
-public class MyFragment extends Fragment {
-    @Nullable
+public class MyFragment extends BaseFragment<MainPresenter> implements IfoundView<AbBean> {
+
+    private static final String TAG = "MyFragment";
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = View.inflate(getContext(), R.layout.my_fragment, null);
-        return inflate;
+    protected MainPresenter setPresenter() {
+        return new MainPresenter();
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView(View inflate) {
+
+    }
+
+
+    @Override
+    protected int setChildView() {
+        return R.layout.my_fragment;
+    }
+
+    @Override
+    public void onsucess(AbBean abBean) {
+        Log.e(TAG, "onsucess: "+abBean.getMsg());
+    }
+
+    @Override
+    public void onerro(AbBean abBean) {
+
     }
 }

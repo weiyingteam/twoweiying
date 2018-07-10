@@ -1,24 +1,35 @@
 package com.example.zdm.weiyingdemo.view.fragment;
 
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.zdm.weiyingdemo.R;
+import com.example.zdm.weiyingdemo.presenter.MainPresenter;
 
 /**
  * author:Created by WeiWeiFeng on 2018/7/6.
  */
-public class FoundFragment extends Fragment{
-    @Nullable
+public class FoundFragment extends BaseFragment<MainPresenter> {
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = View.inflate(getContext(), R.layout.found_fragment, null);
-        return inflate;
+    protected MainPresenter setPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView(View inflate) {
+
+    }
+
+
+
+    @Override
+    protected int setChildView() {
+        return R.layout.found_fragment;
     }
 }

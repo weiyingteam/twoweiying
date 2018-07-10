@@ -2,11 +2,8 @@ package com.example.zdm.weiyingdemo.model.http;
 
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
 
-
 import io.reactivex.Observable;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 
 /**
  * author:Created by WeiWeiFeng on 2018/7/6.
