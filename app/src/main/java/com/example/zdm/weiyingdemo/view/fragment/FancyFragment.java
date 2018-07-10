@@ -1,5 +1,6 @@
 package com.example.zdm.weiyingdemo.view.fragment;
 
+import android.util.Log;
 import android.view.View;
 
 import com.example.zdm.weiyingdemo.R;
@@ -122,7 +123,9 @@ public class FancyFragment extends BaseFragment<MainPresenter> implements Ifound
 
     @Override
     public void onsucess(AbBean abBean) {
-//        Log.e(TAG, "onsucess: " + abBean.getMsg());
+        Log.e(TAG, "onsucess: " + abBean.getMsg());
+//        abBean.
+
     }
 
     @Override
