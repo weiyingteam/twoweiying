@@ -1,21 +1,25 @@
 package com.example.zdm.weiyingdemo.view.activity;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.zdm.weiyingdemo.R;
+import com.example.zdm.weiyingdemo.model.bean.AbBean;
 import com.example.zdm.weiyingdemo.presenter.MainPresenter;
 import com.example.zdm.weiyingdemo.view.fragment.FancyFragment;
 import com.example.zdm.weiyingdemo.view.fragment.FoundFragment;
 import com.example.zdm.weiyingdemo.view.fragment.MyFragment;
 import com.example.zdm.weiyingdemo.view.fragment.SpecialFragment;
+import com.example.zdm.weiyingdemo.view.interfaces.IBaseView;
+import com.example.zdm.weiyingdemo.view.interfaces.IfoundView;
 import com.hjm.bottomtabbar.BottomTabBar;
 
-public class MainActivity extends BaseActivity<MainPresenter> {
+public class MainActivity extends BaseActivity<MainPresenter> implements IfoundView<AbBean>{
     private BottomTabBar mBottomTabBar;
     private TextView title;
-
+    private static final String TAG = "MainActivity";
     @Override
     protected MainPresenter setPresenter() {
         return new MainPresenter();
@@ -23,12 +27,12 @@ public class MainActivity extends BaseActivity<MainPresenter> {
 
     @Override
     protected void initData() {
-
+        presenter.attachView(this);
+        presenter.getView();
     }
 
     @Override
     protected void initView() {
-
         title = (TextView) findViewById(R.id.title_main);
         mBottomTabBar = (BottomTabBar) findViewById(R.id.bottom_tab_bar);
         mBottomTabBar
@@ -64,4 +68,13 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         return R.layout.activity_main;
     }
 
+    @Override
+    public void onsucess(AbBean abBean) {
+        Log.e(TAG, "onsucess: "+abBean.toString() );
+    }
+
+    @Override
+    public void onerro(AbBean abBean) {
+
+    }
 }

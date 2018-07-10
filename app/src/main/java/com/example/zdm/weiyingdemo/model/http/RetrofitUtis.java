@@ -16,9 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * author:Created by WeiWeiFeng on 2018/7/6.
  */
 public class RetrofitUtis {
+    private static RetrofitUtis retrofitUtis;
+    private final RetrofitApi retrofitApi;
 
-    static {
-
+    private RetrofitUtis() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
@@ -35,9 +36,19 @@ public class RetrofitUtis {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.BASE_URL).client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
+        retrofitApi = retrofit.create(RetrofitApi.class);
 
-        retorfitApi = retrofit.create(RetrofitApi.class);
     }
 
-    public static RetrofitApi retorfitApi;
+    public static RetrofitUtis getinstance() {
+        if (retrofitUtis == null) {
+            retrofitUtis = new RetrofitUtis();
+        }
+        return retrofitUtis;
+    }
+
+
+    public RetrofitApi retrofitAp(){
+       return retrofitApi;
+}
 }
