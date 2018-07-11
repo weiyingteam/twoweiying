@@ -17,17 +17,18 @@
             android:id="@+id/image_slide_panel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            card:bottomMarginTop="38dp"
-            card:itemMarginTop="10dp"
-            card:yOffsetStep="13dp" />
+            card:bottomMarginTop="@dimen/dp_38"
+            card:itemMarginTop="@dimen/dp_10"
+            card:yOffsetStep="@dimen/dp_13" />
 
         <Button
             android:id="@+id/huan"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:background="@mipmap/card_bg"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="57dp"
+            android:layout_marginBottom="@dimen/dp_23"
             android:text="换一批" />
 
     </RelativeLayout>
