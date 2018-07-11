@@ -1,6 +1,8 @@
 package com.example.zdm.weiyingdemo.model.http;
 
+import com.example.zdm.weiyingdemo.app.Constant;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
+import com.example.zdm.weiyingdemo.model.bean.ConstantBean;
 import com.example.zdm.weiyingdemo.model.bean.VideoDateilsBean;
 
 import io.reactivex.Observable;

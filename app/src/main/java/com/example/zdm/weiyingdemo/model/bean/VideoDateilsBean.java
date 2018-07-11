@@ -1,8 +1,9 @@
 package com.example.zdm.weiyingdemo.model.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class VideoDateilsBean {
+public class VideoDateilsBean implements Serializable {
 
     /**
      * msg : 成功

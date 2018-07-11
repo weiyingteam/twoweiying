@@ -1,7 +1,10 @@
 package com.example.zdm.weiyingdemo.view.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,6 +20,7 @@ import com.example.zdm.weiyingdemo.presenter.VideoDetailsPersenter;
 import com.example.zdm.weiyingdemo.view.adapter.MyPagerAdapter;
 import com.example.zdm.weiyingdemo.view.fragment.ConstantFragment;
 import com.example.zdm.weiyingdemo.view.fragment.INfoFragment;
+import com.example.zdm.weiyingdemo.view.fragment.MyFragment;
 import com.example.zdm.weiyingdemo.view.interfaces.IVideoDetailsView;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
@@ -31,10 +35,12 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
     StandardGSYVideoPlayer videoPlayer;
 
     OrientationUtils orientationUtils;
-    private ExpandableTextView expandableTextView;
-    private TextView textautor;
+
     private ViewPager viewpager;
     private TabLayout viewById;
+    private INfoFragment iNfoFragment;
+    private ArrayList<Fragment> fragmentList;
+    private ArrayList<String> list_title;
 
     @Override
     protected VideoDetailsPersenter setPresenter() {
@@ -45,14 +51,15 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
     protected void initData() {
         Intent intent = getIntent();
         String uid = intent.getStringExtra("uid");
-        presenter.getDate("1f7948116a4b4d16afd1d67484c4756e");
+        if (uid!=null){
+            presenter.getDate(uid);
+        }
+
     }
 
     @Override
     protected void initView() {
         videoPlayer =  (StandardGSYVideoPlayer)findViewById(R.id.video_player);
-//        expandableTextView = findViewById(R.id.expandtext);
-//        textautor = findViewById(R.id.textautor);
         viewById = findViewById(R.id.tablayout);
         viewpager = findViewById(R.id.viewpager);
         //增加封面
@@ -83,14 +90,8 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
             }
         });
         videoPlayer.startPlayLogic();
-        ArrayList<Fragment> fragmentList = new ArrayList<>();
-        ArrayList<String> list_Title = new ArrayList<>();
-        fragmentList.add(new INfoFragment());
-        fragmentList.add(new ConstantFragment());
-        list_Title.add("简介");
-        list_Title.add("评论");
-        viewpager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),VideodetailsActivity.this,fragmentList,list_Title));
-        viewById.setupWithViewPager(viewpager);//此方法就是让tablayout和ViewPage
+        fragmentList = new ArrayList<>();
+        list_title = new ArrayList<>();
     }
 
     @Override
@@ -101,8 +102,18 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
     @Override
     public void onsucess(VideoDateilsBean videoDateilsBean) {
         videoPlayer.setUp( videoDateilsBean.getRet().getSmoothURL(), true, videoDateilsBean.getRet().getTitle());
-//        textautor.setText("导演："+"张东敏");
-//        expandableTextView.setText("主演："+videoDateilsBean.getRet().getDescription());
+        iNfoFragment = new INfoFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("===",videoDateilsBean);
+        iNfoFragment.setArguments(bundle);
+        fragmentList.add(iNfoFragment);
+        fragmentList.add(new ConstantFragment());
+        list_title.add("简介");
+        list_title.add("评论");
+        viewpager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),VideodetailsActivity.this,fragmentList,list_title));
+        viewById.setupWithViewPager(viewpager);//此方法就是让tablayout和ViewPage
+
+
     }
 
     @Override
