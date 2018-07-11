@@ -16,10 +16,11 @@ import com.example.zdm.weiyingdemo.view.interfaces.IBaseView;
  */
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements IBaseView{
     public P presenter;
+    private View inflate;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = View.inflate(getActivity(), setChildView(), null);
+        inflate = View.inflate(getActivity(), setChildView(), null);
         initView(inflate);
         initBaseView();
         initData();
@@ -46,9 +47,17 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     protected abstract P setPresenter();
 
+    public P getPresenter() {
+        return presenter;
+    }
+
     protected abstract void initData();
 
     protected abstract void initView(View inflate);
+
+    public View getView(){
+        return inflate;
+    };
 
     protected abstract int setChildView();
 }

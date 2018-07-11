@@ -94,7 +94,7 @@ public class FancyFragment extends BaseFragment<MainPresenter> implements Ifound
                     public void onClick(View view) {
 //                        Log.e(TAG, "onClick: "+dataList.get(index).getMediaId() );
                         Intent intent = new Intent(getActivity(), VideodetailsActivity.class);
-                        intent.putExtra("uid",dataList.get(index).getMediaId());
+                        intent.putExtra("uid", dataList.get(index).getMediaId());
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.animator.in_from_right, R.animator.out_to_left);
                     }
@@ -143,7 +143,7 @@ public class FancyFragment extends BaseFragment<MainPresenter> implements Ifound
                     d++;
                 }
 
-                slidePanel.getAdapter().notifyDataSetChanged();
+//                slidePanel.getAdapter().notifyDataSetChanged();
             }
         });
 
@@ -164,18 +164,18 @@ public class FancyFragment extends BaseFragment<MainPresenter> implements Ifound
     }
 
     private void addData(List<AbBean.RetBean.ListBean.ChildListBean> childList) {
-        if (dataList.size() == 0) {
-            for (int i = 0; i < childList.size(); i++) {
-                String pic = childList.get(i).getPic();
-                String title = childList.get(i).getTitle();
-                String dataId = childList.get(i).getDataId();
-                String description = childList.get(i).getDescription();
+//        if (dataList.size() == 0) {
+        for (int i = 0; i < childList.size(); i++) {
+            String pic = childList.get(i).getPic();
+            String title = childList.get(i).getTitle();
+            String dataId = childList.get(i).getDataId();
+            String description = childList.get(i).getDescription();
 
-                CardDataItem cardDataItem = new CardDataItem(pic, title, dataId, description);
-                dataList.add(cardDataItem);
-            }
-
+            CardDataItem cardDataItem = new CardDataItem(pic, title, dataId, description);
+            dataList.add(cardDataItem);
         }
+        slidePanel.getAdapter().notifyDataSetChanged();
+//        }
     }
 
     @Override
@@ -206,17 +206,13 @@ public class FancyFragment extends BaseFragment<MainPresenter> implements Ifound
             imageView = (ImageView) view.findViewById(R.id.card_image_view);
             maskView = view.findViewById(R.id.maskView);
             userNameTv = (TextView) view.findViewById(R.id.card_user_name);
-            imageNumTv = (TextView) view.findViewById(R.id.card_pic_num);
             description = (TextView) view.findViewById(R.id.card_other_description);
         }
 
         public void bindData(CardDataItem itemData) {
-
             Glide.with(getContext()).load(itemData.getPic()).into(imageView);
             userNameTv.setText(itemData.getTitle());
             description.setText("" + itemData.getDescription());
-//            likeNumTv.setText(itemData.likeNum + "");
-
 
         }
     }
