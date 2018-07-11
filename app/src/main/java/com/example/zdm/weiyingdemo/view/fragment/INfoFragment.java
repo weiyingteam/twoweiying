@@ -49,7 +49,7 @@ public class INfoFragment extends BaseFragment {
             VideoDateilsBean serializable1 = (VideoDateilsBean) serializable;
             String description = serializable1.getRet().getDescription();
             expandableTextView.setText("主演："+description);
-            infoRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+            infoRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
             List<VideoDateilsBean.RetBean.ListBean> list = serializable1.getRet().getList();
             listall.addAll(list);
             INfoVideoDetailsAdapter iNfoVideoDetailsAdapter = new INfoVideoDetailsAdapter(listall, getActivity());

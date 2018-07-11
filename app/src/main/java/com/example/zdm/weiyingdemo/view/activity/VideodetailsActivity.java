@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,15 +15,21 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.model.bean.VideoDateilsBean;
 import com.example.zdm.weiyingdemo.presenter.VideoDetailsPersenter;
 import com.example.zdm.weiyingdemo.view.adapter.MyPagerAdapter;
+import com.example.zdm.weiyingdemo.view.costom.TitleLayout;
 import com.example.zdm.weiyingdemo.view.fragment.ConstantFragment;
 import com.example.zdm.weiyingdemo.view.fragment.INfoFragment;
 import com.example.zdm.weiyingdemo.view.fragment.MyFragment;
 import com.example.zdm.weiyingdemo.view.interfaces.IVideoDetailsView;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
+import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
+import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
+import com.shuyu.gsyvideoplayer.listener.LockClickListener;
+import com.shuyu.gsyvideoplayer.utils.Debuger;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
@@ -41,6 +48,11 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
     private INfoFragment iNfoFragment;
     private ArrayList<Fragment> fragmentList;
     private ArrayList<String> list_title;
+    private ImageView imageView;
+    private boolean isPlay;
+    private boolean isPause;
+    private TitleLayout videodetailstitle;
+    private GSYVideoOptionBuilder gsyVideoOption;
 
     @Override
     protected VideoDetailsPersenter setPresenter() {
@@ -62,27 +74,7 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
         videoPlayer =  (StandardGSYVideoPlayer)findViewById(R.id.video_player);
         viewById = findViewById(R.id.tablayout);
         viewpager = findViewById(R.id.viewpager);
-        //增加封面
-        ImageView imageView = new ImageView(this);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(R.mipmap.erweima);
-        videoPlayer.setThumbImageView(imageView);
-        //增加title
-        videoPlayer.getTitleTextView().setVisibility(View.VISIBLE);
-        //设置返回键
-        videoPlayer.getBackButton().setVisibility(View.VISIBLE);
-        //设置旋转
-        orientationUtils = new OrientationUtils(this, videoPlayer);
-        //设置全屏按键功能,这是使用的是选择屏幕，而不是全屏
-        videoPlayer.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                orientationUtils.resolveByClick();
-            }
-        });
-        //是否可以滑动调整
-        videoPlayer.setIsTouchWiget(true);
-        //设置返回按键功能
+        videodetailstitle = findViewById(R.id.videodetailstitle);
         videoPlayer.getBackButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +82,16 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
             }
         });
         videoPlayer.startPlayLogic();
+        orientationUtils = new OrientationUtils(this, videoPlayer);
+//初始化不打开外部的旋转
+        orientationUtils.setEnable(false);
+        imageView = new ImageView(this);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        //设置返回键
+        videoPlayer.getBackButton().setVisibility(View.VISIBLE);
+        //设置旋转
+        orientationUtils = new OrientationUtils(this, videoPlayer);
+        gsyVideoOption = new GSYVideoOptionBuilder();
         fragmentList = new ArrayList<>();
         list_title = new ArrayList<>();
     }
@@ -101,7 +103,6 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
 
     @Override
     public void onsucess(VideoDateilsBean videoDateilsBean) {
-        videoPlayer.setUp( videoDateilsBean.getRet().getSmoothURL(), true, videoDateilsBean.getRet().getTitle());
         iNfoFragment = new INfoFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("===",videoDateilsBean);
@@ -112,7 +113,58 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
         list_title.add("评论");
         viewpager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),VideodetailsActivity.this,fragmentList,list_title));
         viewById.setupWithViewPager(viewpager);//此方法就是让tablayout和ViewPage
+        Glide.with(this).load( videoDateilsBean.getRet().getPic()).into(imageView);
+        videodetailstitle.setTitle(videoDateilsBean.getRet().getTitle());
+        gsyVideoOption.setThumbImageView(imageView)
+                .setIsTouchWiget(true)
+                .setRotateViewAuto(false)
+                .setLockLand(false)
+                .setAutoFullWithSize(true)
+                .setShowFullAnimation(false)
+                .setNeedLockFull(true)
+                .setUrl( videoDateilsBean.getRet().getSmoothURL())
+                .setCacheWithPlay(false)
+                .setVideoTitle( videoDateilsBean.getRet().getTitle())
+                .setVideoAllCallBack(new GSYSampleCallBack() {
 
+
+                    @Override
+                    public void onPrepared(String url, Object... objects) {
+                        super.onPrepared(url, objects);
+                        //开始播放了才能旋转和全屏
+                        orientationUtils.setEnable(true);
+                        isPlay = true;
+                    }
+
+                    @Override
+                    public void onQuitFullscreen(String url, Object... objects) {
+                        super.onQuitFullscreen(url, objects);
+                        Debuger.printfError("***** onQuitFullscreen **** " + objects[0]);//title
+                        Debuger.printfError("***** onQuitFullscreen **** " + objects[1]);//当前非全屏player
+                        if (orientationUtils != null) {
+                            orientationUtils.backToProtVideo();
+                        }
+                    }
+                }).setLockClickListener(new LockClickListener() {
+            @Override
+            public void onClick(View view, boolean lock) {
+                if (orientationUtils != null) {
+                    //配合下方的onConfigurationChanged
+                    orientationUtils.setEnable(!lock);
+                }
+            }
+        }).build(videoPlayer);
+
+        videoPlayer.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //直接横屏
+                orientationUtils.resolveByClick();
+
+                //第一个true是否需要隐藏actionbar，第二个true是否需要隐藏statusbar
+                videoPlayer.startWindowFullscreen(VideodetailsActivity.this, true, true);
+            }
+        });
 
     }
 
@@ -120,36 +172,51 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
     public void onerro(VideoDateilsBean videoDateilsBean) {
 
     }
+@Override
+public void onBackPressed() {
+    if (orientationUtils != null) {
+        orientationUtils.backToProtVideo();
+    }
+    if (GSYVideoManager.backFromWindowFull(this)) {
+        return;
+    }
+    super.onBackPressed();
+}
+
+
     @Override
     protected void onPause() {
+        videoPlayer.getCurrentPlayer().onVideoPause();
         super.onPause();
-        videoPlayer.onVideoPause();
+        isPause = true;
     }
 
     @Override
     protected void onResume() {
+        videoPlayer.getCurrentPlayer().onVideoResume(false);
         super.onResume();
-        videoPlayer.onVideoResume();
+        isPause = false;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        GSYVideoManager.releaseAllVideos();
+        if (isPlay) {
+            videoPlayer.getCurrentPlayer().release();
+        }
         if (orientationUtils != null)
             orientationUtils.releaseListener();
     }
 
+
+
     @Override
-    public void onBackPressed() {
-        //先返回正常状态
-        if (orientationUtils.getScreenType() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            videoPlayer.getFullscreenButton().performClick();
-            return;
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        //如果旋转了就全屏
+        if (isPlay && !isPause) {
+            videoPlayer.onConfigurationChanged(this, newConfig, orientationUtils, true, true);
         }
-        //释放所有
-        videoPlayer.setVideoAllCallBack(null);
-        super.onBackPressed();
     }
 }
 
