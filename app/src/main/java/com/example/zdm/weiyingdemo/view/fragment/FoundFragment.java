@@ -2,11 +2,14 @@ package com.example.zdm.weiyingdemo.view.fragment;
 
 
 import android.content.Context;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -25,7 +28,7 @@ import java.util.List;
 /**
  * author:Created by WeiWeiFeng on 2018/7/6.
  */
-    public class FoundFragment extends BaseFragment<MainPresenter> implements IfoundView<AbBean> {
+    public class FoundFragment extends BaseFragment<MainPresenter> implements IfoundView<AbBean>, SwipeRefreshLayout.OnRefreshListener {
 
 
     private View inflate;
@@ -36,6 +39,8 @@ import java.util.List;
     private List<AbBean.RetBean.ListBean.ChildListBean> jingcailist;
     private ScrollView shou_scroll;
     private TextView title;
+    private SwipeRefreshLayout swip;
+    private RelativeLayout ssjl;
 
 
     @Override
@@ -50,6 +55,12 @@ import java.util.List;
         jingcairecy = this.inflate.findViewById(R.id.jingcairecy);
         shou_scroll = this.inflate.findViewById(R.id.shou_scroll);
         title = this.inflate.findViewById(R.id.title);
+        swip = inflate.findViewById(R.id.swip);
+        ssjl = inflate.findViewById(R.id.ssjl);
+
+
+
+        swip.setOnRefreshListener(this);
 
 
         scrollListenner();
@@ -161,9 +172,21 @@ import java.util.List;
         }
 
 
+
     @Override
     public void onerro(AbBean abBean) {
 
+    }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //停止刷新
+                swip.setRefreshing(false);
+            }
+        }, 1000);
     }
 
 

@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <ScrollView
         android:id="@+id/shou_scroll"
         android:layout_width="match_parent"
@@ -24,6 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="164dp"></com.youth.banner.Banner>
                 <RelativeLayout
+                    android:id="@+id/ssjl"
                     android:layout_marginTop="@dimen/dp_40"
                     android:layout_centerHorizontal="true"
                     android:alpha="0.3"
@@ -99,5 +105,7 @@
         android:layout_height="@dimen/dp_66"
         android:gravity="center"
         />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>
