@@ -2,6 +2,7 @@ package com.example.zdm.weiyingdemo.view.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
 import com.example.zdm.weiyingdemo.presenter.MainPresenter;
+import com.example.zdm.weiyingdemo.view.activity.VideodetailsActivity;
 import com.example.zdm.weiyingdemo.view.adapter.SelectAdapter;
 import com.example.zdm.weiyingdemo.view.interfaces.IfoundView;
 import com.youth.banner.Banner;
@@ -28,11 +30,11 @@ import java.util.List;
 /**
  * author:Created by WeiWeiFeng on 2018/7/6.
  */
-    public class FoundFragment extends BaseFragment<MainPresenter> implements IfoundView<AbBean>, SwipeRefreshLayout.OnRefreshListener {
+public class FoundFragment extends BaseFragment<MainPresenter> implements IfoundView<AbBean>, SwipeRefreshLayout.OnRefreshListener {
 
 
     private View inflate;
-    private List<String> bannerlist=new ArrayList<>();
+    private List<String> bannerlist = new ArrayList<>();
     private Banner banner;
     private RecyclerView jingcairecy;
     private SelectAdapter jingxuanAdapter;
@@ -41,6 +43,7 @@ import java.util.List;
     private TextView title;
     private SwipeRefreshLayout swip;
     private RelativeLayout ssjl;
+    private List<AbBean.RetBean.ListBean.ChildListBean> childList1;
 
 
     @Override
@@ -57,7 +60,6 @@ import java.util.List;
         title = this.inflate.findViewById(R.id.title);
         swip = inflate.findViewById(R.id.swip);
         ssjl = inflate.findViewById(R.id.ssjl);
-
 
 
         swip.setOnRefreshListener(this);
@@ -79,7 +81,6 @@ import java.util.List;
     }
 
 
-
     @Override
     protected int setChildView() {
         return R.layout.found_fragment;
@@ -88,11 +89,11 @@ import java.util.List;
 
     @Override
     public void onsucess(AbBean abBean) {
-        Log.e("TAG", "onsucess: "+abBean.getMsg() );
+        Log.e("TAG", "onsucess: " + abBean.getMsg());
         List<AbBean.RetBean.ListBean> list = abBean.getRet().getList();
         List<AbBean.RetBean.ListBean.ChildListBean> childList = list.get(0).getChildList();
-        List<AbBean.RetBean.ListBean.ChildListBean> childList1 = list.get(2).getChildList();
-        for(int i=0;i<childList.size();i++){
+        childList1 = list.get(2).getChildList();
+        for (int i = 0; i < childList.size(); i++) {
             bannerlist.add(childList.get(i).getPic());
         }
         banner.setImageLoader(new ImageBannerLoader());
@@ -104,9 +105,25 @@ import java.util.List;
         jingxuanAdapter.setList(childList1);
         jingcairecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         jingcairecy.setAdapter(jingxuanAdapter);
+        jingxuanAdapter.setOnItemClickListener(new SelectAdapter.OnItemClickListener() {
 
-        }
 
+            @Override
+            public void onItemClick(View view, int position) {
+                String dataId = childList1.get(position).getDataId();
+                Intent intent = new Intent(getActivity(), VideodetailsActivity.class);
+                intent.putExtra("uid", dataId);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.animator.in_from_right, R.animator.out_to_left);
+            }
+
+
+            @Override
+            public void onItemLongClick(View view) {
+
+            }
+        });
+    }
 
 
     @Override
@@ -130,7 +147,7 @@ import java.util.List;
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
             Glide.with(context).load(path).into(imageView);
-       }
+        }
     }
 
 }
