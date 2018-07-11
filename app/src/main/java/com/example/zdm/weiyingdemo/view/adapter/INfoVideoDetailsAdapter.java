@@ -4,11 +4,13 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.model.bean.VideoDateilsBean;
 
@@ -33,16 +35,14 @@ public class INfoVideoDetailsAdapter extends Adapter{
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHoder holder1 = (ViewHoder) holder;
-//        holder1.info_img.
-        for (int i = 0; i <list.get(position).getChildList().size() ; i++) {
-            holder1.info_title.setText(list.get(position).getChildList().get(i).getTitle());
-        }
+            Glide.with(context).load(list.get(0).getChildList().get(position).getPic()).into(holder1.info_img);
+            holder1.info_title.setText(list.get(0).getChildList().get(position).getTitle());
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list.get(0).getChildList().size();
     }
     class  ViewHoder extends RecyclerView.ViewHolder{
 
