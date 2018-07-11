@@ -14,6 +14,7 @@ import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
 import com.example.zdm.weiyingdemo.model.bean.CardDataItem;
 import com.example.zdm.weiyingdemo.presenter.MainPresenter;
+import com.example.zdm.weiyingdemo.view.activity.VideodetailsActivity;
 import com.example.zdm.weiyingdemo.view.interfaces.IfoundView;
 import com.stone.card.library.CardAdapter;
 import com.stone.card.library.CardSlidePanel;
@@ -92,7 +93,7 @@ public class FancyFragment extends BaseFragment<MainPresenter> implements Ifound
                     @Override
                     public void onClick(View view) {
 //                        Log.e(TAG, "onClick: "+dataList.get(index).getMediaId() );
-                        Intent intent = new Intent();
+                        Intent intent = new Intent(getActivity(), VideodetailsActivity.class);
                         intent.putExtra("uid",dataList.get(index).getMediaId());
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.animator.in_from_right, R.animator.out_to_left);

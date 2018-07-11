@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
 
     @Override
     protected void initData() {
-        presenter.getView();
+
     }
 
     @Override

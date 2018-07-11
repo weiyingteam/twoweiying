@@ -1,12 +1,15 @@
 package com.example.zdm.weiyingdemo.model.http;
 
+import com.example.zdm.weiyingdemo.app.Constant;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
+import com.example.zdm.weiyingdemo.model.bean.ConstantBean;
 import com.example.zdm.weiyingdemo.model.bean.VideoDateilsBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 /**
  * author:Created by WeiWeiFeng on 2018/7/6.
@@ -17,6 +20,9 @@ public interface RetrofitApi {
     @POST("front/videoDetailApi/videoDetail.do")
     @FormUrlEncoded
     Observable<VideoDateilsBean>   videoDateils(@Field("mediaId") String  mediaId);
+    @POST("front/Commentary/getCommentList.do?mediaId=CMCC_00000000000000001_621653189")
+    @FormUrlEncoded
+    Observable<ConstantBean>   Constant(@Field("mediaId") String  mediaId);
 
 //    1.首页接口
 //    接口地址：http://api.svipmovie.com/front/homePageApi/homePage.do
