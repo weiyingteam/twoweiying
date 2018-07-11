@@ -1,7 +1,6 @@
 package com.example.zdm.weiyingdemo.model.http;
 
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
-import com.example.zdm.weiyingdemo.model.bean.SelectBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -11,7 +10,7 @@ import retrofit2.http.GET;
  */
 public interface RetrofitApi {
     @GET("front/homePageApi/homePage.do")
-    Observable<SelectBean> found();
+    Observable<AbBean> found();
 
 //    1.首页接口
              //http://api.svipmovie.com/front/homePageApi/homePage.do

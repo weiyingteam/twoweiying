@@ -4,6 +4,7 @@ import com.example.zdm.weiyingdemo.model.bean.AbBean;
 import com.example.zdm.weiyingdemo.model.http.RetrofitUtis;
 import com.example.zdm.weiyingdemo.model.minterfaces.Foundinterface;
 
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -32,9 +33,10 @@ public class TestData {
 
                     }
 
+
                     @Override
                     public void onNext(AbBean abBean) {
-                        foundinterface.onsucess(abBean);
+                         foundinterface.onsucess(abBean);
                     }
 
                     @Override
