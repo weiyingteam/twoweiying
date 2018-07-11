@@ -93,18 +93,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/title"
-        android:alpha="0"
-        android:textSize="@dimen/dp_16"
-        android:text="精选"
-        android:textColor="#fff"
-        android:background="#f00"
-        android:paddingTop="@dimen/dp_10"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_66"
-        android:gravity="center"
-        />
+
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

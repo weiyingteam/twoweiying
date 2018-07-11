@@ -91,6 +91,7 @@ import java.util.List;
         Log.e("TAG", "onsucess: "+abBean.getMsg() );
         List<AbBean.RetBean.ListBean> list = abBean.getRet().getList();
         List<AbBean.RetBean.ListBean.ChildListBean> childList = list.get(0).getChildList();
+        List<AbBean.RetBean.ListBean.ChildListBean> childList1 = list.get(2).getChildList();
         for(int i=0;i<childList.size();i++){
             bannerlist.add(childList.get(i).getPic());
         }
@@ -100,11 +101,10 @@ import java.util.List;
         banner.start();
 
         jingxuanAdapter = new SelectAdapter(getActivity());
-
-        jingxuanAdapter.setList(childList);
+        jingxuanAdapter.setList(childList1);
         jingcairecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         jingcairecy.setAdapter(jingxuanAdapter);
-        
+
         }
 
 
