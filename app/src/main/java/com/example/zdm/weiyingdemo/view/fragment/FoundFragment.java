@@ -78,26 +78,6 @@ import java.util.List;
 
     }
 
-//    @Override
-//    protected void initData() {
-//
-////        presenter.toM();
-//        //scroll滑动监听
-//        scrollListenner();
-//    }
-//
-//
-//
-//    @Override
-//    protected void initView(View inflate) {
-//
-//
-////        findId();
-//    }
-//
-//    private void findId() {
-//
-//    }
 
 
     @Override
@@ -105,37 +85,6 @@ import java.util.List;
         return R.layout.found_fragment;
     }
 
-//    @Override
-//    public void selectioninterv(SelectBean.RetBean v, boolean b) {
-//        if(b){
-//            //banner
-//            childList = v.getList().get(0).getChildList();
-//            jingcailist = v.getList().get(2).getChildList();
-//            for(int i = 0; i< this.childList.size(); i++){
-//                String pic = this.childList.get(i).getPic();
-//                if(pic!=null){
-//                    bannerlist.add(pic);
-//                }
-//            }
-//            banner.setImageLoader(new ImageBannerLoader());
-//            banner.setImages(bannerlist);
-//            banner.setDelayTime(2000);
-//            banner.start();
-//            //banner
-//            //精彩推荐
-//            if(jingxuanAdapter==null){
-//                jingcairecy.setNestedScrollingEnabled(false);
-//                jingxuanAdapter = new SelectAdapter(getActivity());
-//                jingxuanAdapter.setList(jingcailist);
-//                jingcairecy.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                jingcairecy.setAdapter(jingxuanAdapter);
-//            }
-//
-//            //精彩推荐
-//        }else{
-//            Toast.makeText(getActivity(),"请求失败!",Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     @Override
     public void onsucess(AbBean abBean) {
@@ -155,20 +104,7 @@ import java.util.List;
         jingxuanAdapter.setList(childList);
         jingcairecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         jingcairecy.setAdapter(jingxuanAdapter);
-
-
-
-        //banner
-            //精彩推荐
-          /*  if(jingxuanAdapter==null){
-                jingcairecy.setNestedScrollingEnabled(false);
-                jingxuanAdapter = new SelectAdapter(getActivity());
-                jingxuanAdapter.setList(jingcailist);
-                jingcairecy.setLayoutManager(new LinearLayoutManager(getActivity()));
-                jingcairecy.setAdapter(jingxuanAdapter);
-            }*/
-
-            //精彩推荐
+        
         }
 
 
