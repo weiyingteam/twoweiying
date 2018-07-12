@@ -39,7 +39,7 @@ public class VideoDateilsBean implements Serializable {
         this.code = code;
     }
 
-    public static class RetBean {
+    public static class RetBean implements Serializable{
         /**
          * couponNum : 0
          * HDURL : http://movie.vods1.cnlive.com/3/vod/2017/0608/3_1f7948116a4b4d16afd1d67484c4756e/ff8080815bf6b453015c835c61c41b05_1500.m3u8
@@ -325,7 +325,7 @@ public class VideoDateilsBean implements Serializable {
             this.list = list;
         }
 
-        public static class AdvBean {
+        public static class AdvBean implements Serializable {
             /**
              * imgURL : http://phonemovie.ks3-cn-beijing.ksyun.com/image/2018/06/28/1530164351684091464.jpg
              * dataId : ff80808163008060016444e75ad16567
@@ -381,7 +381,7 @@ public class VideoDateilsBean implements Serializable {
             }
         }
 
-        public static class ListBean {
+        public static class ListBean implements Serializable {
             /**
              * showType : vertical
              * childList : [{"airTime":2013,"duration":"01:42:29","loadtype":"video","score":0,"angleIcon":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/05/09/1494296614609066838.png","dataId":"f0b54041b3fe4213ba25add9edeb520b","description":"森林守护者 刚刚失去母亲的少女玛丽·凯瑟琳\u201cM.K\u201d（阿曼达·塞弗里德 Amanda Seyfried 配音）乘坐出租车来到一座几乎与世隔绝的大森林。这里生活着他的父亲，一个坚信森林里生活着矮人族的科学家，为了找到这些小生灵，他不惜牺牲家庭和婚姻。玛丽到达的那天刚好是夏至和满月，一个百年一次的特殊日子。包围着森林绿色和祥和的森林守护者的女王塔拉（Beyoncé Knowles 配音）将在这天选出继承人，然而他们的死对头Boggan人却要想方设法阻止继承人的诞生，这样便可以顺利地将腐烂和死亡的气息带到森林每一个角落。 \r\n　　并不相信父亲说法的玛丽意外卷入两个矮人族的存亡纷争之中，而她也和数名森林守护者的勇士们肩负起保卫森林的重任\u2026\u2026","loadURL":"http://api.svipmovie.com/front/videoDetailApi/videoDetail.do?mediaId=f0b54041b3fe4213ba25add9edeb520b","shareURL":"http://h5.svipmovie.com/bqdy/f0b54041b3fe4213ba25add9edeb520b.shtml?fromTo=shoujimovie","pic":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/06/08/1496913328996009404.jpg","title":"森林战士"},{"airTime":1987,"duration":"01:31:45","loadtype":"video","score":0,"angleIcon":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/05/09/1494296586400001011.png","dataId":"978db7d5fe004cc1be2910d5028b799c","description":"@TV香港大片：《中华战士》是由钟志文执导的动作片，杨紫琼、尔冬升参加演出。讲述的是一个抗日故事，几个中国人团结一个小国家全城百姓抵抗侵略的故事。","loadURL":"http://api.svipmovie.com/front/videoDetailApi/videoDetail.do?mediaId=978db7d5fe004cc1be2910d5028b799c","shareURL":"http://h5.svipmovie.com/xgdp/978db7d5fe004cc1be2910d5028b799c.shtml?fromTo=shoujimovie","pic":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/04/25/1493089434970081952.jpg","title":"中华战士"},{"airTime":1987,"duration":"01:42:34","loadtype":"video","score":0,"angleIcon":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/05/09/1494296586400001011.png","dataId":"9427f4368ff34d8da9aa6214ea6df01e","description":"@TV香港大片：李修贤是港产警察片的代表性人物，演出各式警察均栩栩如生，本片是他身兼编、导、演三职的作品，并且选择了有交通部飞虎队之称的\u201c反飞车组\"作描写中心。","loadURL":"http://api.svipmovie.com/front/videoDetailApi/videoDetail.do?mediaId=9427f4368ff34d8da9aa6214ea6df01e","shareURL":"http://h5.svipmovie.com/xgdp/9427f4368ff34d8da9aa6214ea6df01e.shtml?fromTo=shoujimovie","pic":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/04/25/1493111053637050552.jpg","title":"铁血骑警"},{"airTime":1990,"duration":"01:30:00","loadtype":"video","score":0,"angleIcon":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/05/09/1494296586400001011.png","dataId":"a5a3438000b6408fb47878f5abdc8839","description":"@TV香港大片：家辉与KK、ET等人喜好飞车，一次赛事中家辉邂逅少女阿雪。恶少金十二常对阿雪骚扰，家辉出头，与十二少结怨。家辉叔父张铁柱乃巡警，反对家辉动武，又威迫十二少停手，结果遭人袭击至重伤。家辉盛怒，率童党找十二少算帐\u2026\u2026","loadURL":"http://api.svipmovie.com/front/videoDetailApi/videoDetail.do?mediaId=a5a3438000b6408fb47878f5abdc8839","shareURL":"http://h5.svipmovie.com/xgdp/a5a3438000b6408fb47878f5abdc8839.shtml?fromTo=shoujimovie","pic":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/07/03/1499068006418054042.jpg","title":"铁血骑警2:朋党"},{"airTime":0,"duration":"00:18:36","loadtype":"video","score":0,"angleIcon":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/05/09/1494296586400001011.png","dataId":"7c120130a0d74e5d8c3e374e447a606a","description":"《新僵尸先生2》线下首映礼","loadURL":"http://api.svipmovie.com/front/videoDetailApi/videoDetail.do?mediaId=7c120130a0d74e5d8c3e374e447a606a","shareURL":"http://h5.svipmovie.com/zxgl/7c120130a0d74e5d8c3e374e447a606a.shtml?fromTo=shoujimovie","pic":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2018/01/02/1514879509852013786.jpg","title":"《新僵尸先生2》线下首映礼"},{"airTime":2016,"duration":"00:13:02","loadtype":"video","score":0,"angleIcon":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/05/09/1494296586400001011.png","dataId":"55d560a957ab41f3a3d61a6cc504d591","description":"@TV作品库：电影《海沧英雄》通过60后、70后、80后和90后这四代人追逐梦想的故事，展现敢于拼搏、百折不挠的新海沧人的精神。影片以海沧2013厦门国际自行车比赛为故事背景，展开一系列的剧情\u2026","loadURL":"http://api.svipmovie.com/front/videoDetailApi/videoDetail.do?mediaId=55d560a957ab41f3a3d61a6cc504d591","shareURL":"http://h5.svipmovie.com/zpk/55d560a957ab41f3a3d61a6cc504d591.shtml?fromTo=shoujimovie","pic":"http://phonemovie.ks3-cn-beijing.ksyun.com/image/2016/09/21/1474430815901032592.jpg","title":"海沧英雄"}]
@@ -416,7 +416,7 @@ public class VideoDateilsBean implements Serializable {
                 this.childList = childList;
             }
 
-            public static class ChildListBean {
+            public static class ChildListBean implements Serializable {
                 /**
                  * airTime : 2013
                  * duration : 01:42:29
