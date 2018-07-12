@@ -123,13 +123,6 @@
                 android:layout_height="50dp"
                 android:text="我的收藏" />
         </LinearLayout>
-
-
-
-
-
-
-
     </RelativeLayout>
 
 
