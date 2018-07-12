@@ -32,9 +32,9 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         mBottomTabBar = (BottomTabBar) findViewById(R.id.bottom_tab_bar);
         mBottomTabBar
                 .init(getSupportFragmentManager())//初始化方法，必须第一个调用；传入参数为V4包下的FragmentManager
-                .setImgSize(50, 50)//设置ICON图片的尺寸
-                .setFontSize(12)//设置文字的尺寸
-                .setTabPadding(4, 6, 10)//设置ICON图片与上部分割线的间隔、图片与文字的间隔、文字与底部的间隔
+                .setImgSize(25, 25)//设置ICON图片的尺寸
+                .setFontSize(8)//设置文字的尺寸
+                .setTabPadding(2, 4, 7)//设置ICON图片与上部分割线的间隔、图片与文字的间隔、文字与底部的间隔
                 .setChangeColor(Color.RED, Color.DKGRAY)//设置选中的颜色、未选中的颜色
                 .addTabItem("精选", R.mipmap.found_select, R.mipmap.found, FoundFragment.class)//设置文字、一张图片、fragment
                 .addTabItem("专题", R.mipmap.special_select, R.mipmap.special, SpecialFragment.class)//设置文字、一张图片、fragment

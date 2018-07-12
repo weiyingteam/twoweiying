@@ -1,6 +1,7 @@
 package com.example.zdm.weiyingdemo.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.model.bean.VideoDateilsBean;
+import com.example.zdm.weiyingdemo.view.activity.VideodetailsActivity;
 
 import java.util.List;
 
@@ -33,10 +35,19 @@ public class INfoVideoDetailsAdapter extends Adapter{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         ViewHoder holder1 = (ViewHoder) holder;
             Glide.with(context).load(list.get(0).getChildList().get(position).getPic()).into(holder1.info_img);
             holder1.info_title.setText(list.get(0).getChildList().get(position).getTitle());
+        holder1.info_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, VideodetailsActivity.class);
+                intent.putExtra("uid",list.get(0).getChildList().get(position).getDataId());
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 

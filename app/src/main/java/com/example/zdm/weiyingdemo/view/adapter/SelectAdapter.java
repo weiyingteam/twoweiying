@@ -1,6 +1,7 @@
 package com.example.zdm.weiyingdemo.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
+import com.example.zdm.weiyingdemo.view.activity.VideodetailsActivity;
 
 import java.util.List;
 
@@ -39,7 +41,7 @@ public class SelectAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-        JingCaiViewHolder jingCaiViewHolder = (JingCaiViewHolder) holder;
+        JingCaiViewHolder jingCaiViewHolder= (JingCaiViewHolder) holder;
         jingCaiViewHolder.textView.setText(list.get(position).getTitle());
         Glide.with(context).load(list.get(position).getPic()).into(jingCaiViewHolder.imageView);
 
@@ -57,6 +59,15 @@ public class SelectAdapter extends RecyclerView.Adapter {
 //                return true;
 //            }
 //        });
+        jingCaiViewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, VideodetailsActivity.class);
+                intent.putExtra("uid",list.get(position).getDataId());
+                context.startActivity(intent);
+
+            }
+        });
     }
 
     @Override
