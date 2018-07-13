@@ -1,11 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="我的" />
+        android:layout_height="110dp"
+        android:background="@mipmap/my_bg_colorful"
+        android:gravity="center_vertical|right">
+
+        <ImageView
+            android:id="@+id/image_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_20"
+            android:src="@mipmap/my_set"/>
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:divider="@drawable/line"
+            app:dividerPadding="40dp"
+            app:showDividers="middle|end">
+
+            <RelativeLayout
+                android:id="@+id/rl_record"
+                style="@style/mine_lin_style"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_history"
+                    style="@style/common_tv_style"
+                    android:layout_centerVertical="true"
+                    android:text="历史" />
+
+                <ImageView
+                    style="@style/both_wrap_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_down"
+                style="@style/mine_lin_style"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_down"
+                    style="@style/common_tv_style"
+                    android:layout_centerVertical="true"
+                    android:text="缓存" />
+
+                <ImageView
+                    style="@style/both_wrap_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_collection"
+                style="@style/mine_lin_style"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_collection"
+                    style="@style/common_tv_style"
+                    android:layout_centerVertical="true"
+                    android:text="收藏" />
+
+                <ImageView
+                    style="@style/both_wrap_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_them"
+                style="@style/mine_lin_style"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_them"
+                    style="@style/common_tv_style"
+                    android:layout_centerVertical="true"
+                    android:text="主体" />
+
+                <ImageView
+                    style="@style/both_wrap_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
+            </RelativeLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
+    </android.support.v4.widget.NestedScrollView>
+
+
 </LinearLayout>
