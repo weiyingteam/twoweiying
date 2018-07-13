@@ -56,9 +56,11 @@ public class SpecialFragment extends BaseFragment<MainPresenter> implements Ifou
                             catalogId = b[0];
                         }
                     }
-//                    Toast.makeText(getContext(), ""+catalogId, Toast.LENGTH_SHORT).show();
+                    String title = list.get(position).getTitle();
+
                     Intent intent = new Intent(getActivity(), VideoListActivity.class);
                     intent.putExtra("catalogId",catalogId);
+                    intent.putExtra("title",title);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.animator.in_from_right, R.animator.out_to_left);
                 } else {
