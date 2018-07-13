@@ -89,7 +89,6 @@ public class FoundFragment extends BaseFragment<MainPresenter> implements Ifound
 
     @Override
     public void onsucess(AbBean abBean) {
-        Log.e("TAG", "onsucess: " + abBean.getMsg());
         List<AbBean.RetBean.ListBean> list = abBean.getRet().getList();
         List<AbBean.RetBean.ListBean.ChildListBean> childList = list.get(0).getChildList();
         childList1 = list.get(2).getChildList();
@@ -105,6 +104,7 @@ public class FoundFragment extends BaseFragment<MainPresenter> implements Ifound
         jingxuanAdapter.setList(childList1);
         jingcairecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         jingcairecy.setAdapter(jingxuanAdapter);
+        jingcairecy.setNestedScrollingEnabled(false);
         jingxuanAdapter.setOnItemClickListener(new SelectAdapter.OnItemClickListener() {
 
 

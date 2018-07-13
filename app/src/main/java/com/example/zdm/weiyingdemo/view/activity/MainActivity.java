@@ -1,7 +1,11 @@
 package com.example.zdm.weiyingdemo.view.activity;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.zdm.weiyingdemo.R;
@@ -12,9 +16,11 @@ import com.example.zdm.weiyingdemo.view.fragment.MyFragment;
 import com.example.zdm.weiyingdemo.view.fragment.SpecialFragment;
 import com.hjm.bottomtabbar.BottomTabBar;
 
+import java.util.List;
+
 public class MainActivity extends BaseActivity<MainPresenter> {
     private BottomTabBar mBottomTabBar;
-    private TextView title;
+    private TextView title,main_fenxiang;
     private static final String TAG = "MainActivity";
 
     @Override
@@ -30,6 +36,19 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     protected void initView() {
         title = (TextView) findViewById(R.id.title_main);
         mBottomTabBar = (BottomTabBar) findViewById(R.id.bottom_tab_bar);
+         main_fenxiang = findViewById(R.id.main_fenxiang);
+        main_fenxiang. setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "发现一个看片神奇" + "\n"  + "\n" + "https://github.com/weiyingteam/twoweiying");
+                sendIntent.setType("text/plain");
+//                sendIntent.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity");//QQ好友或QQ群
+                startActivityForResult(sendIntent, 200);
+            }
+
+        });
         mBottomTabBar
                 .init(getSupportFragmentManager())//初始化方法，必须第一个调用；传入参数为V4包下的FragmentManager
                 .setImgSize(25, 25)//设置ICON图片的尺寸
