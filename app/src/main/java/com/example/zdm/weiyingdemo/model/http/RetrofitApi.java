@@ -4,6 +4,7 @@ import com.example.zdm.weiyingdemo.app.Constant;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
 import com.example.zdm.weiyingdemo.model.bean.ConstantBean;
 import com.example.zdm.weiyingdemo.model.bean.VideoDateilsBean;
+import com.example.zdm.weiyingdemo.model.bean.VideoListBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -18,14 +19,17 @@ import retrofit2.http.POST;
 public interface RetrofitApi {
     @GET("front/homePageApi/homePage.do")
     Observable<AbBean> found();
+
     @POST("front/videoDetailApi/videoDetail.do")
     @FormUrlEncoded
-    Observable<VideoDateilsBean>   videoDateils(@Field("mediaId") String  mediaId);
-    @POST("front/Commentary/getCommentList.do")
+    Observable<VideoDateilsBean> videoDateils(@Field("mediaId") String mediaId);
+
+    @POST("front/columns/getVideoList.do")
     @FormUrlEncoded
-    Observable<ConstantBean>   contant(@Field("mediaId") String  mediaId);
+    Observable<VideoListBean> getVideoList(@Field("catalogId") String catalogId, @Field("information") String information);
+//http://api.svipmovie.com/front/columns/getVideoList.do?catalogId=402834815584e463015584e53843000b&information=null
 //    1.首页接口
-             //http://api.svipmovie.com/front/homePageApi/homePage.do
+    //http://api.svipmovie.com/front/homePageApi/homePage.do
 
 
 //    2. 频道列表

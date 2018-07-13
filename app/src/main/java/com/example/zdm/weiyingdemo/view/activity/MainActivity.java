@@ -82,13 +82,4 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         return R.layout.activity_main;
     }
 
-//    @Override
-//    public void onsucess(AbBean abBean) {
-//        Log.e(TAG, "onsucess: "+abBean.toString() );
-//    }
-//
-//    @Override
-//    public void onerro(AbBean abBean) {
-//
-//    }
 }
