@@ -9,7 +9,7 @@
     <com.example.zdm.weiyingdemo.view.costom.TitleLayout
         android:id="@+id/videodetailstitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_45"></com.example.zdm.weiyingdemo.view.costom.TitleLayout>
+        android:layout_height="@dimen/dp_50"></com.example.zdm.weiyingdemo.view.costom.TitleLayout>
     <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
         android:id="@+id/video_player"
         android:layout_width="match_parent"

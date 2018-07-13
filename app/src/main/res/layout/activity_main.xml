@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.zdm.weiyingdemo.view.costom.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,129 +8,192 @@
     tools:context=".view.activity.MainActivity">
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@mipmap/bg_colorful"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="@dimen/dp_80"
+                fresco:roundAsCircle="true"
+                android:layout_marginTop="@dimen/dp_55"
+                android:layout_marginLeft="@dimen/dp_26"
+                fresco:placeholderImage="@mipmap/photo"
+                android:layout_height="@dimen/dp_80" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_18"
+                android:textSize="@dimen/dp_16"
+                android:text="微影，微一下" />
+        </LinearLayout>
 
 
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:text="微一下" />
+            >
 
+            <ImageView
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="@dimen/dp_23"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_height="@dimen/dp_23"
+                android:src="@mipmap/my_everyone" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textSize="@dimen/dp_18"
+                android:text="我的收藏" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="@dimen/dp_23"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_height="@dimen/dp_23"
+                android:src="@mipmap/my_down" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textSize="@dimen/dp_18"
+                android:text="我的下载" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="@dimen/dp_23"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_height="@dimen/dp_23"
+                android:src="@mipmap/my_collection" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_18"
+                android:text="福利" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="216dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            >
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="@dimen/dp_23"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_height="@dimen/dp_23"
+                android:src="@mipmap/collection" />
 
             <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="我的收藏" />
+                android:id="@+id/main_fenxiang"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textSize="@dimen/dp_18"
+                android:text="分享" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="138dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            >
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="@dimen/dp_23"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_height="@dimen/dp_23"
+                android:src="@mipmap/my_select" />
 
             <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="我的收藏" />
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textSize="@dimen/dp_18"
+                android:text="意见反馈" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
+            <ImageView
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="@dimen/dp_23"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_height="@dimen/dp_23"
+                android:src="@mipmap/my_set" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_18"
+                android:text="设置" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="214dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_140"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher" />
+                <ImageView
+                    android:layout_width="@dimen/dp_23"
+                    android:layout_marginLeft="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_23"
+                    android:src="@mipmap/my" />
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dp_18"
+                    android:text="关于" />
+                <ImageView
+                    android:layout_width="@dimen/dp_23"
+                    android:layout_marginLeft="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_23"
+                    android:src="@mipmap/my_set" />
 
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="我的收藏" />
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dp_18"
+                    android:text="主题" />
+
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="139dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="我的收藏" />
-        </LinearLayout>
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="53dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="我的收藏" />
-        </LinearLayout>
-
-
-
-
-
-
-
-    </RelativeLayout>
+    </LinearLayout>
 
 
 

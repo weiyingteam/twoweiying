@@ -21,7 +21,9 @@ public interface RetrofitApi {
     @POST("front/videoDetailApi/videoDetail.do")
     @FormUrlEncoded
     Observable<VideoDateilsBean>   videoDateils(@Field("mediaId") String  mediaId);
-
+    @POST("front/Commentary/getCommentList.do")
+    @FormUrlEncoded
+    Observable<ConstantBean>   contant(@Field("mediaId") String  mediaId);
 //    1.首页接口
              //http://api.svipmovie.com/front/homePageApi/homePage.do
 

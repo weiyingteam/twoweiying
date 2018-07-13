@@ -1,19 +1,16 @@
 package com.example.zdm.weiyingdemo.view.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TableLayout;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.zdm.weiyingdemo.R;
@@ -23,7 +20,6 @@ import com.example.zdm.weiyingdemo.view.adapter.MyPagerAdapter;
 import com.example.zdm.weiyingdemo.view.costom.TitleLayout;
 import com.example.zdm.weiyingdemo.view.fragment.ConstantFragment;
 import com.example.zdm.weiyingdemo.view.fragment.INfoFragment;
-import com.example.zdm.weiyingdemo.view.fragment.MyFragment;
 import com.example.zdm.weiyingdemo.view.interfaces.IVideoDetailsView;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
@@ -34,8 +30,7 @@ import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 import java.util.ArrayList;
-
-import cn.carbs.android.expandabletextview.library.ExpandableTextView;
+import java.util.List;
 
 public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> implements IVideoDetailsView<VideoDateilsBean> {
     private static final String TAG = "VideodetailsActivity";
@@ -75,12 +70,6 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
         viewById = findViewById(R.id.tablayout);
         viewpager = findViewById(R.id.viewpager);
         videodetailstitle = findViewById(R.id.videodetailstitle);
-        videoPlayer.getBackButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
         videoPlayer.startPlayLogic();
         orientationUtils = new OrientationUtils(this, videoPlayer);
 //初始化不打开外部的旋转
@@ -88,7 +77,7 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
         imageView = new ImageView(this);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         //设置返回键
-        videoPlayer.getBackButton().setVisibility(View.VISIBLE);
+        videoPlayer.getBackButton().setVisibility(View.INVISIBLE);
         //设置旋转
         orientationUtils = new OrientationUtils(this, videoPlayer);
         gsyVideoOption = new GSYVideoOptionBuilder();
@@ -107,8 +96,12 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
         Bundle bundle = new Bundle();
         bundle.putSerializable("===",videoDateilsBean);
         iNfoFragment.setArguments(bundle);
+        ConstantFragment constantFragment = new ConstantFragment();
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("---",videoDateilsBean.getRet().getDataID());
+        constantFragment.setArguments(bundle1);
         fragmentList.add(iNfoFragment);
-        fragmentList.add(new ConstantFragment());
+        fragmentList.add(constantFragment);
         list_title.add("简介");
         list_title.add("评论");
         viewpager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),VideodetailsActivity.this,fragmentList,list_title));
@@ -124,7 +117,6 @@ public class VideodetailsActivity extends BaseActivity<VideoDetailsPersenter> im
                 .setNeedLockFull(true)
                 .setUrl( videoDateilsBean.getRet().getSmoothURL())
                 .setCacheWithPlay(false)
-                .setVideoTitle( videoDateilsBean.getRet().getTitle())
                 .setVideoAllCallBack(new GSYSampleCallBack() {
 
 
