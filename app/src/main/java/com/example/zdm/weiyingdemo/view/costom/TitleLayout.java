@@ -1,5 +1,6 @@
 package com.example.zdm.weiyingdemo.view.costom;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
@@ -13,9 +14,12 @@ import android.widget.Toast;
 
 import com.example.zdm.weiyingdemo.R;
 
+import static com.example.zdm.weiyingdemo.R.color.style_color;
+
 public class TitleLayout extends LinearLayout {
 
     private TextView tv_title;
+    private LinearLayout titleLayout;
 
     public TitleLayout(Context context) {
         super(context, null);
@@ -44,6 +48,7 @@ public class TitleLayout extends LinearLayout {
         });
 
         tv_title = (TextView) findViewById(R.id.tv_title);
+        titleLayout = (LinearLayout) findViewById(R.id.title_layout);
 
     }
 
@@ -52,5 +57,9 @@ public class TitleLayout extends LinearLayout {
         if (!TextUtils.isEmpty(title)) {
             tv_title.setText(title);
         }
+    }
+    //显示活的的标题颜色
+    public void setTitleColor(int color) {
+        titleLayout.setBackgroundColor(color);
     }
 }
