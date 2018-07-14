@@ -1,6 +1,8 @@
 package com.example.zdm.weiyingdemo.model.http;
 
+import com.example.zdm.weiyingdemo.app.Constant;
 import com.example.zdm.weiyingdemo.model.bean.AbBean;
+import com.example.zdm.weiyingdemo.model.bean.ConstantBean;
 import com.example.zdm.weiyingdemo.model.bean.VideoDateilsBean;
 import com.example.zdm.weiyingdemo.model.bean.VideoListBean;
 
@@ -25,4 +27,7 @@ public interface RetrofitApi {
     @POST("front/columns/getVideoList.do")
     @FormUrlEncoded
     Observable<VideoListBean> getVideoList(@Field("catalogId") String catalogId, @Field("information") String information);
+    @POST("front/Commentary/getCommentList.do")
+    @FormUrlEncoded
+    Observable<ConstantBean> contant(@Field("mediaId") String mediaId);
 }
