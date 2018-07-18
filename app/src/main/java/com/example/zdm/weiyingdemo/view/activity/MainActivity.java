@@ -1,22 +1,18 @@
 package com.example.zdm.weiyingdemo.view.activity;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.zdm.weiyingdemo.R;
 import com.example.zdm.weiyingdemo.presenter.MainPresenter;
 import com.example.zdm.weiyingdemo.view.fragment.FancyFragment;
 import com.example.zdm.weiyingdemo.view.fragment.FoundFragment;
+import com.example.zdm.weiyingdemo.view.fragment.LiveFragment;
 import com.example.zdm.weiyingdemo.view.fragment.MyFragment;
 import com.example.zdm.weiyingdemo.view.fragment.SpecialFragment;
 import com.hjm.bottomtabbar.BottomTabBar;
-
-import java.util.List;
 
 public class MainActivity extends BaseActivity<MainPresenter> {
     private BottomTabBar mBottomTabBar;
@@ -57,6 +53,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
                 .setChangeColor(Color.RED, Color.DKGRAY)//设置选中的颜色、未选中的颜色
                 .addTabItem("精选", R.mipmap.found_select, R.mipmap.found, FoundFragment.class)//设置文字、一张图片、fragment
                 .addTabItem("专题", R.mipmap.special_select, R.mipmap.special, SpecialFragment.class)//设置文字、一张图片、fragment
+                .addTabItem("直播", R.mipmap.special_select, R.mipmap.special, LiveFragment.class)//设置文字、一张图片、fragment
                 .addTabItem("发现", R.mipmap.fancy_select, R.mipmap.fancy, FancyFragment.class)//设置文字、一张图片、fragment
                 .addTabItem("我的", R.mipmap.my_select, R.mipmap.my, MyFragment.class)//设置文字、两张图片、fragment
                 .isShowDivider(false)//设置是否显示分割线

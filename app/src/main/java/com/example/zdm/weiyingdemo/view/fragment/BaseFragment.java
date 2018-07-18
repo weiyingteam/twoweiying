@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.zdm.weiyingdemo.app.MyApp;
 import com.example.zdm.weiyingdemo.presenter.BasePresenter;
 import com.example.zdm.weiyingdemo.view.interfaces.IBaseView;
+import com.squareup.leakcanary.RefWatcher;
 
 /**
  * author:Created by WeiWeiFeng on 2018/7/10.
@@ -60,6 +62,13 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     };
 
     protected abstract int setChildView();
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = MyApp.getRefWatcher(getActivity());//1
+        refWatcher.watch(this);
+    }
 }
 
 
